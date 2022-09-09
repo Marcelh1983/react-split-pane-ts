@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "react-split-pane-ts": "libs/react-split-pane-ts",
     "split-pane": "apps/split-pane",
     "split-pane-e2e": "apps/split-pane-e2e"
   }
