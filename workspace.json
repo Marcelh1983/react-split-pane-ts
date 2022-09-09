@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "split-pane": "apps/split-pane",
+    "split-pane-e2e": "apps/split-pane-e2e"
+  }
+}
