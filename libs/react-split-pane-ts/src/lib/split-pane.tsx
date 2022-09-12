@@ -17,16 +17,14 @@ function IsNullOrUndefined<T>(value: T) {
 }
 
 interface Props {
-  minSize?: number;
-  maxSize?: number;
+  minPaneSize?: number;
+  maxPaneSize?: number;
   primaryIndex?: number;
   split?: 'vertical' | 'horizontal';
   allowResize?: boolean;
   step?: number;
   children: React.ReactNode[];
   className?: string;
-  paneClassName?: string;
-  paneStyle?: React.CSSProperties;
   resizerClassName?: string;
   resizerStyle?: React.CSSProperties;
   style?: React.CSSProperties;
@@ -105,11 +103,11 @@ export function SplitPane(props: Props) {
             sizeDelta = -sizeDelta;
           }
 
-          let newMaxSize = (props.maxSize && +props.maxSize) || 0;
+          let newMaxSize = (props.maxPaneSize && +props.maxPaneSize) || 0;
           if (
-            !IsNullOrUndefined(props.maxSize) &&
-            props.maxSize !== undefined &&
-            +props.maxSize <= 0 &&
+            !IsNullOrUndefined(props.maxPaneSize) &&
+            props.maxPaneSize !== undefined &&
+            +props.maxPaneSize <= 0 &&
             splitPane.current
           ) {
             if (split === 'vertical') {
@@ -124,9 +122,9 @@ export function SplitPane(props: Props) {
           let newSize = pane1Size - sizeDelta;
           const newPosition = position - positionDelta;
 
-          if (newSize < (props.minSize || 0)) {
-            newSize = props.minSize || 0;
-          } else if (props.maxSize !== undefined && newSize > newMaxSize) {
+          if (newSize < (props.minPaneSize || 0)) {
+            newSize = props.minPaneSize || 0;
+          } else if (props.maxPaneSize !== undefined && newSize > newMaxSize) {
             newSize = newMaxSize;
           } else {
             setPosition(newPosition);
@@ -146,8 +144,8 @@ export function SplitPane(props: Props) {
       activeResizer,
       allowResize,
       position,
-      props.maxSize,
-      props.minSize,
+      props.maxPaneSize,
+      props.minPaneSize,
       props.step,
       split,
     ]
